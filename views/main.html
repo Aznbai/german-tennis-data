@@ -1,0 +1,64 @@
+<div id="app-content" ng-controller="appContentController as appContentCtrl">
+    <div class="container-fluid">
+        <div class="row donutWrap" ng-init="toggle()">
+            <div class="col-md-10">
+                <div club-court-line-chart config="tennisConfig" id="lineChart"></div>
+            </div>
+            <div class="col-md-2">
+                <div jun-sen-donut-chart config="tennisConfig"></div>
+                <div atp-wta-donut-chart config="tennisConfig"></div>
+                <div court-club-donut-chart config="tennisConfig"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input ng-model="tennisConfig.yearCurr" type="range" min="{{tennisConfig.yearMin}}" max="2017" class="slider"> </input>
+                        </div>
+                        <div class="col-md-3 infobox">
+                            <p>Yahr:
+                                <br><strong>{{tennisConfig.yearCurr}}</strong> </p>
+                            <p>BIP:
+                                <br> <strong>{{tennisConfig.bipCurr}}</strong>
+                                <br><small>Mlrd. EUR</small> </p>
+                            <p>WTA Superstars:
+                                <br> <strong>{{tennisConfig.currData[2]}}</strong> </p>
+                            <p>ATP Superstars:
+                                <br> <strong>{{tennisConfig.currData[3]}}</strong> </p>
+                        </div>
+                        <div class="col-md-3 infobox">
+                            <p>Juniore:
+                                <br> <strong>{{tennisConfig.currData[4]/1000 | number:0}} </strong>
+                                <br> <small>Tsd.</small> </p>
+                            <p>Seniore:
+                                <br> <strong>{{tennisConfig.currData[5]/1000 | number:0}} </strong>
+                                <br> <small>Tsd.</small> </p>
+                            <p>Vereinsmitglieder
+                                <br>insgesamt:
+                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/1000 | number:0}} </strong>
+                                <br> <small>Tsd.</small> </p>
+                        </div>
+                        <div class="col-md-3 infobox">
+                            <p>Courts:
+                                <br> <strong>{{tennisConfig.currData[1]}}</strong> </p>
+                            <p>Mitglieder/Court:
+                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[1]| number:2}}</strong> </p>
+                            <p>Courts/Club:
+                                <br> <strong>{{tennisConfig.currData[1]/tennisConfig.currData[0]| number:2}}</strong> </p>
+                        </div>
+                        <div class="col-md-3 infobox">
+                            <p>Clubs:
+                                <br> <strong>{{tennisConfig.currData[0]}}</strong> </p>
+                            <p>Mitglieder/Club:
+                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[0]| number:2}}</strong> </p>
+                        </div>
+                        <div class="col-md-12  legendbox">
+                            <p>Zahlen und Fakten: Tennis in der BRD. Wovon hängt die Mietgliederzahlenentwicklung bei den deutschen Tennis Vereinen ab? </p>
+                            <p> Der Deutsche Tennis Bund ist mit über 1,4 Millionen Mitgliedern der größte Tennisverband der Welt. Quelle: <small>Deutscher Tennis Bund.<a href="http://www.dtb-tennis.de/Verband/Wir-ueber-uns/Daten-Fakten"> Mitgliederentwicklung seit 1948</a> </small> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

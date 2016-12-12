@@ -1,0 +1,71 @@
+<div id="app-content" ng-controller="appContentController as appContentCtrl">
+    <div class="container-fluid">
+        <div class="row donutWrap" ng-init="toggle()">
+            <div class="col-md-12">
+                <h1>Zahlen und Fakten zum Thema Tennis in der BRD</h1>
+                <p>wir haben uns folgende Fragen gestellt: Wovon hängt die Mietgliederzahlenentwicklung bei Tennis Vereinen ab? An welche Kriterien ist die Zahl der Vereinsmitglieder gekoppelt?</p>
+                <p>Der Deutsche Tennis Bund ist mit über 1,4 Millionen Mitgliedern der größte Tennisverband der Welt. </p>
+                <div club-court-line-chart config="tennisConfig"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    <div tennis-donut-chart config="tennisConfig"></div>
+                </div>
+                <div class="col-md-6">
+                    <input ng-model="tennisConfig.yearCurr" type="range" min="{{tennisConfig.yearMin}}" max="{{tennisConfig.yearMax}}" class="slider"></input>
+                    <p>Yahr:
+                        <span class="pull-right">{{tennisConfig.yearCurr}}</span>
+                    </p>
+                    <p>Vereinsmitglieder gesamt:
+                        <span class="pull-right">{{tennisConfig.partsCurr[0]+tennisConfig.partsCurr[1]}}</span>
+                    </p>
+                    <p>Juniore:
+                        <span class="pull-right">{{tennisConfig.partsCurr[0]}}</span>
+                    </p>
+                    <p>Seniore:
+                        <span class="pull-right">{{tennisConfig.partsCurr[1]}}</span>
+                    </p>
+                    <p>BIP Mlrd. Euro:
+                        <span class="pull-right">{{tennisConfig.bipCurr}}</span>
+                    </p>
+                    <p> Quelle: <small><i>Deutscher Tennis Bund.</i><a href="http://www.dtb-tennis.de/Verband/Wir-ueber-uns/Daten-Fakten"> Mitgliederentwicklung seit 1948</a> </small> </p>
+                </div>
+            </div>
+        </div>
+        <p class="animation" ng-class="{'fade-in': fade }">Hello {{name}}!</p>
+        <button ng-click="toggle()">Click</button>
+        <div class="col-md-12">
+            <h2 class="text-center"> CHUCHUNDRA <a href="http://www.dtb-tennis.de/Verband/Wir-ueber-uns/Daten-Fakten">mitglieder</a> and Holders of the year {{mainConfig.yearCurr}}</h2>
+            <input ng-model="mainConfig.yearCurr" type="range" min="{{mainConfig.yearMin}}" max="{{mainConfig.yearMax}}" class="slider"></input>
+        </div>
+        <multi-line></multi-line>
+        <!-- ng-repeat="x in names" -->
+        <div class="col-md-3 donutWrap">
+            <donut-chart config="mainConfig"></donut-chart>
+        </div>
+        <div class="col-md-8 " id="chartContainer">
+            <div viz-sparkline config="mainConfig"></div>
+            <div id="viz-display">
+                <!-- <div multi-line config="mainConfig"></div> --></div>
+            <div id="viz-config">
+                <p>
+                    <span>Data Points</span>
+                    <label>
+                        <input type="radio" ng-model="mainConfig.showPoints" value="yes" ng-change="configChange()"> On </label>
+                    <label>
+                        <input type="radio" ng-model="mainConfig.showPoints" value="no" ng-change="configChange()"> Off </label>
+                    <span for="mainConfig.interpolate">Interpolate Option:</span>
+                    <select ng-options="option as option for option in interpolateOptions" ng-model="mainConfig.interpolate" ng-change="configChange()"></select>
+                </p>
+                <!-- <ul>
+    <li ng-repeat="dataPoint in mainConfig.data track by $index"> <span>Wirtschaftsjahr:{{$index+2000}}</span>
+        <label for="dataPoint.x">x: </label>
+        <input id="dataPoint.x" type="number" ng-model="dataPoint.x" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="configChange()" disabled />
+        <label for="dataPoint.y">Beteiligung:</label>
+        <input id="dataPoint.y" type="number" ng-model="dataPoint.y" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="configChange()" /> </li>
+</ul> -->
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+</div>
