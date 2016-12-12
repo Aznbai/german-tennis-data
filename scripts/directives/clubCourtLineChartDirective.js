@@ -148,12 +148,17 @@ function clubCourtLineChartDirective(d3Service, $rootScope) {
               .style("stroke", colors[a]);
             //Y AXIS 
             ySvg[a] = graph
-              .append("g").style("fill", "none")
+              .append("g")
+              .style("fill", "none")
               .style("stroke", colors[a])
               .attr("transform", "translate( " + axisLeftShift[a] + "  ,0)")
               .call(yAxes[a])
-              .append("text").attr("y", scaleTxtMargin)
-              .attr("dy", ".71em")
+              .append("text")
+              .attr("y", scaleTxtMargin)
+              .attr("dy", ".5em")
+              .attr("dx", ".5em")
+              .style("fill", colors[a])
+              .style("stroke", "none")
               .style("text-anchor", "end")
               .text(graphLabels[a]);
             //CURRENT YEAR INDICATOR
