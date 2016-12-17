@@ -101,8 +101,8 @@
       }
       
       .infobox p {
-          background-color: rgba(255, 255, 255, .5);
-          font-size: 20px;
+          background-color: rgba(255, 255, 255, .2);
+          font-size: 14px;
           text-align: center;
           margin-bottom: 5px;
           padding-top: 10px;
@@ -111,8 +111,12 @@
           /*font-weight: 100;*/
       }
       
+      p.header {
+          /*margin-bottom: 4px;*/
+      }
+      
       .infobox small {
-          font-size: 16px;
+          font-size: 12px;
           text-align: center;
           margin-bottom: 5px;
           padding-top: 10px;
@@ -120,8 +124,8 @@
       }
       
       .legendbox p {
-          background-color: rgba(255, 255, 255, .5);
-          font-size: 16px;
+          background-color: rgba(255, 255, 255, .1);
+          font-size: 14px;
           margin-bottom: 5px;
           padding-left: 5px;
           padding-right: 5px;
@@ -150,7 +154,7 @@
       
       text {
           font-size: 9px !important;
-          opacity: 0.8;
+          /*opacity: 0.8;*/
           text-transform: uppercase;
           letter-spacing: 1.2px
       }

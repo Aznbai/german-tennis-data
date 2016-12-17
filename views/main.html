@@ -15,46 +15,87 @@
                         <div class="col-md-12">
                             <input ng-model="tennisConfig.yearCurr" type="range" min="{{tennisConfig.yearMin}}" max="2017" class="slider"> </input>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 infobox">
-                            <p>Yahr:
-                                <br><strong>{{tennisConfig.yearCurr}}</strong> </p>
-                            <p>BIP:
-                                <br> <strong>{{tennisConfig.bipCurr}}</strong>
-                                <br><small>Mlrd. EUR</small> </p>
-                            <p>WTA Superstars:
-                                <br> <strong>{{tennisConfig.currData[2]}}</strong> </p>
-                            <p>ATP Superstars:
-                                <br> <strong>{{tennisConfig.currData[3]}}</strong> </p>
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 infobox">
+                                    <p>Yahr:
+                                        <br><strong>{{tennisConfig.yearCurr}}</strong>
+                                        <br>&nbsp; </p>
+                                </div>
+                                <div class="col-xs-6 infobox">
+                                    <p>BIP:
+                                        <br> <strong>{{tennisConfig.bipCurr}}</strong>
+                                        <br><small>Mlrd. EUR</small> </p>
+                                </div>
+                                <div class="col-xs-12 infobox">
+                                    <p class="header">Superstars</p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p>ATP:
+                                        <br> <strong>{{tennisConfig.currData[3]}}</strong> </p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p>WTA:
+                                        <br> <strong>{{tennisConfig.currData[2]}}</strong> </p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p>Gesamt:
+                                        <br> <strong>{{tennisConfig.currData[2]+tennisConfig.currData[3]}}</strong> </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 infobox">
-                            <p>Juniore:
-                                <br> <strong>{{tennisConfig.currData[4]/1000 | number:0}} </strong>
-                                <br> <small>Tsd.</small> </p>
-                            <p>Seniore:
-                                <br> <strong>{{tennisConfig.currData[5]/1000 | number:0}} </strong>
-                                <br> <small>Tsd.</small> </p>
-                            <p>Vereinsmitglieder
-                                <br>insgesamt:
-                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/1000 | number:0}} </strong>
-                                <br> <small>Tsd.</small> </p>
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 infobox">
+                                    <p class="header">Mitglieder</p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p>Juniore:
+                                        <br> <strong>{{tennisConfig.currData[4]/1000 | number:0}} </strong>
+                                        <br> <small>Tsd.</small> </p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p>Seniore:
+                                        <br> <strong>{{tennisConfig.currData[5]/1000 | number:0}} </strong>
+                                        <br> <small>Tsd.</small> </p>
+                                </div>
+                                <div class="col-xs-4 infobox">
+                                    <p> Gesamt:
+                                        <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/1000 | number:0}} </strong>
+                                        <br> <small>Tsd.</small> </p>
+                                </div>
+                                <div class="col-xs-6 infobox">
+                                    <p>pro Court:
+                                        <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[1]| number:2}}</strong> </p>
+                                </div>
+                                <div class="col-xs-6 infobox">
+                                    <p>pro Club:
+                                        <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[0]| number:2}}</strong> </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 infobox">
-                            <p>Courts:
-                                <br> <strong>{{tennisConfig.currData[1]}}</strong> </p>
-                            <p>Mitglieder/Court:
-                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[1]| number:2}}</strong> </p>
-                            <p>Courts/Club:
-                                <br> <strong>{{tennisConfig.currData[1]/tennisConfig.currData[0]| number:2}}</strong> </p>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 infobox">
+                        <div class="col-xs-6 col-sm-6 col-md-4 infobox">
                             <p>Clubs:
                                 <br> <strong>{{tennisConfig.currData[0]}}</strong> </p>
-                            <p>Mitglieder/Club:
-                                <br> <strong>{{(tennisConfig.currData[4]+tennisConfig.currData[5])/tennisConfig.currData[0]| number:2}}</strong> </p>
+                            <p>Courts:
+                                <br> <strong>{{tennisConfig.currData[1]}}</strong> </p>
+                            <p>Courts pro Club:
+                                <br> <strong>{{tennisConfig.currData[1]/tennisConfig.currData[0]| number:2}}</strong> </p>
                         </div>
-                        <div class="col-md-12  legendbox">
-                            <p>Zahlen und Fakten: Tennis in der BRD. Wovon hängt die Mietgliederzahlenentwicklung bei den deutschen Tennis Vereinen ab? </p>
-                            <p> Der Deutsche Tennis Bund ist mit über 1,4 Millionen Mitgliedern der größte Tennisverband der Welt. Quelle: <small>Deutscher Tennis Bund.<a href="http://www.dtb-tennis.de/Verband/Wir-ueber-uns/Daten-Fakten"> Mitgliederentwicklung seit 1948</a> </small> </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-center legendbox">
+                            <p>Zahlen und Fakten: Tennis in der BRD.
+                                <br> <small> Quelle: Deutscher Tennis Bund.<a href="http://www.dtb-tennis.de/Verband/Wir-ueber-uns/Daten-Fakten"> Mitgliederentwicklung seit 1948</a> </small> </p>
+                        </div>
+                        <div class="col-xs-12 col-md-4 legendbox">
+                            <p> Die Mitgliederentwicklung hat eine große Bedeutung für Tennis. Nach dem Boom in den 70er und 80er Jahren ist ein starker Rückgang der Mitgliederzahlen in Vereinen Deutschlands festzustellen.</p>
+                        </div>
+                        <div class="col-xs-12 col-md-4 legendbox">
+                            <p> Unsere interaktive Datenvisualisierung bietet einen analytischen Ansatz, der es ermöglicht spezifisches Wissen über diese Entwicklung zu erlangen. Dieses Wissen soll die Tennis-Gemeinschaft handlungsfähiger machen und somit dem Mitgliederrückgang entgegen wirken. </p>
+                        </div>
+                        <div class="col-xs-12 col-md-4 legendbox">
+                            <p> Wovon hängt die Mietgliederentwicklung ab? Wodurch ist der Mitgliederrückgang hervorgerufen? Wie kann eine positive Mietgliederentwicklung erzeugt werden? Die Antworten auf diese und viele anderen Fragen können Sie finden, indem Sie die Mitgliederentwicklung und ihre Einflussfaktoren genauer betrachten. </p>
                         </div>
                     </div>
                 </div>

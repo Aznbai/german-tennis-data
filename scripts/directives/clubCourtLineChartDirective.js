@@ -25,11 +25,14 @@ function clubCourtLineChartDirective(d3Service, $rootScope) {
           var colors = ["#e80738", "#767284", "#d905a7", "#996901", "#028263", "#0876d0", "#b5466a", "#ffd305", "#0b7e2e", "#0873ab", "#9a5f32", "#f7b1fe", "#d807fe", "#0fffd5", "#bdfe7c", "#fe5e71", "#6d8a79", "#32deff", "#f2840a"];
           var preScaleYearShift = [-34, -47, -36, -25, 0, 0]; //missing years on start, relative to visible representation scale
           var postScaleYearShift = [1, 1, 0, 0, 1, 1]; //missing years on end, relative to visible representation scale
-          var axisLeftShift = [-10, -60, -115, -150, -180, -245];
+          var axisLeftShift = [-10, -15, -60, -65, -115, -120];
           var graphLabels = ["CLUBS", "COURTS", "WTA", "ATP", "JUNIOR", "SENIOR"];
+          var yAxesOrient = ["right", "left", "right", "left", "right", "left"];
+          var yAxesTextOrient = ["start", "end", "start", "end", "start", "end"];
+          var yAxesTextShiftY = [".4em", "1.4em", ".4em", "1.4em", ".4em", "1.4em"]
           var el = element[0];
           // margins
-          var m = [30, 0, 20, 310];
+          var m = [30, 0, 20, 160];
           var scaleTxtMargin = -20;
           //get dimensions of parrent DOM element
           var width = el.clientWidth;
@@ -130,7 +133,19 @@ function clubCourtLineChartDirective(d3Service, $rootScope) {
               .domain([d3.min(graphDatas[a]), d3.max(graphDatas[a])])
               .range([h, 0]);
             // VISIBLE Y AXES 
-            yAxes[a] = d3.svg.axis().scale(yScales[a]).ticks(4).orient("left");
+            yAxes[a] = d3.svg.axis()
+              .scale(yScales[a])
+              .ticks(4)
+              .orient(yAxesOrient[a])
+              .tickFormat(function(d) {
+                if ((d / 1000000) >= 1) {
+                  d = d / 1000000 + "M";
+                }
+                if ((d / 1000) >= 1) {
+                  d = d / 1000 + "K";
+                }
+                return d;
+              });
             //LINES FOR THE GRAPHS
             lines[a] = d3.svg.line()
               .x(function(d, i) {
@@ -155,11 +170,12 @@ function clubCourtLineChartDirective(d3Service, $rootScope) {
               .call(yAxes[a])
               .append("text")
               .attr("y", scaleTxtMargin)
-              .attr("dy", ".5em")
-              .attr("dx", ".5em")
+              .attr("dy", yAxesTextShiftY[a])
+              // .attr("dx", "-.5em")
               .style("fill", colors[a])
               .style("stroke", "none")
-              .style("text-anchor", "end")
+              .style("text-anchor", yAxesTextOrient[a])
+              // .style("text-align", "left")
               .text(graphLabels[a]);
             //CURRENT YEAR INDICATOR
             yearId[a] = graph
