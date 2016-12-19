@@ -219,7 +219,7 @@
       /* Custom page header */
       
       .header {
-          border-bottom: 1px solid #e5e5e5;
+          /*border-bottom: 1px solid #e5e5e5;*/
           margin-bottom: 10px;
       }
       /* Make the masthead heading the same height as the navigation */
@@ -292,6 +292,11 @@
       
       .animation.fade-in {
           opacity: 1;
+      }
+      
+      .slider-wrap {
+          padding-left: 6px;
+          padding-right: 6px;
       }
       
       input[type=range] {
